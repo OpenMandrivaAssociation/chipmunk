@@ -78,7 +78,9 @@ cp Demo/*.[ch] samples/
 %install
 rm -rf %{buildroot}
 pushd src
-make install PREFIX=%{buildroot}/usr
+make install \
+  INCDIR=%{buildroot}%{_includedir} \
+  LIBDEST=%{buildroot}%{_libdir}
 popd
 pushd Demo
 install -d -m 0755 %{buildroot}%{_bindir}
