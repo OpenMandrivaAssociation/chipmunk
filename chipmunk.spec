@@ -1,24 +1,25 @@
 %define name      chipmunk
 %define major     5
+%define pkg_major 6
 %define libname   %mklibname %{name} %major
 %define develname %mklibname -d %{name}
 %define demoname  chipmunk-demo
 %define samplname chipmunk-samples
 
 Name:           %{name}
-Version:        5.2.0
-Release:        %mkrel 2
+Version:        6.0.3
+Release:        %mkrel 1
 Summary:        2D physics engine
 Group:          Development/C
 License:        MIT
-URL:            http://code.google.com/p/chipmunk-physics/
-Source0:        http://files.slembcke.net/chipmunk/release/Chipmunk-%{major}.x/Chipmunk-%{version}.tgz
+URL:            http://chipmunk-physics.net/
+Source0:        http://chipmunk-physics.net/release/Chipmunk-%{pkg_major}.x/Chipmunk-%{version}.tgz
 Source1:        chipmunk-makefile
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 # opengl is only needed by the demos
 BuildRequires:  libmesagl-devel
-BuildRequires:  libglu-devel
-BuildRequires:  libglut-devel
+BuildRequires:  mesaglu-devel
+BuildRequires:  freeglut-devel
 
 %description
 Chipmunk is a rigid body physics library, designed for 2D video games.
@@ -71,7 +72,7 @@ make static CFLAGS=-std=c99
 popd
 pushd Demo
 ln -s ../src/libchipmunk.so.* libchipmunk.so
-gcc -o chipmunk-demo -std=gnu99 -I../include/chipmunk -L. -lchipmunk -lGL -lGLU -lglut *.c
+gcc -o chipmunk-demo -std=gnu99 -I../include/chipmunk -L. -lchipmunk -lm -lGL -lGLU -lglut *.c
 popd
 mkdir samples
 cp Demo/*.[ch] samples/
@@ -98,7 +99,7 @@ rm -rf %{buildroot}
 
 %files -n %{develname}
 %defattr(-,root,root)
-%doc README.txt
+%doc README.textile
 %{_libdir}/libchipmunk.so
 %{_libdir}/libchipmunk.*a
 %{_includedir}/chipmunk
