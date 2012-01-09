@@ -1,6 +1,5 @@
 %define name      chipmunk
-%define major     5
-%define pkg_major 6
+%define major     6
 %define libname   %mklibname %{name} %major
 %define develname %mklibname -d %{name}
 %define demoname  chipmunk-demo
@@ -8,12 +7,12 @@
 
 Name:           %{name}
 Version:        6.0.3
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        2D physics engine
 Group:          Development/C
 License:        MIT
 URL:            http://chipmunk-physics.net/
-Source0:        http://chipmunk-physics.net/release/Chipmunk-%{pkg_major}.x/Chipmunk-%{version}.tgz
+Source0:        http://chipmunk-physics.net/release/Chipmunk-%{major}.x/Chipmunk-%{version}.tgz
 Source1:        chipmunk-makefile
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 # opengl is only needed by the demos
