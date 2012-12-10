@@ -1,0 +1,39 @@
+SRC_FILES := $(shell ls ./*.c ./constraints/*.c)
+
+OBJ := $(patsubst %.c, %.o, $(SRC_FILES))
+INC1 := ../include/chipmunk/
+INC2 := ../include/chipmunk/constraints/
+CFLAGS := -fPIC -std=gnu99 -DNDEBUG
+LIBVER := 6.0
+PREFIX := /usr
+LIBDEST := $(PREFIX)/lib
+INCDIR := $(PREFIX)/include
+CHIPINC1 := $(INCDIR)/chipmunk
+CHIPINC2 := $(INCDIR)/chipmunk/constraints
+
+all: libchipmunk.so.$(LIBVER)
+static: libchipmunk.a
+
+%.o: %.c
+	gcc -c $(CFLAGS) -I$(INC1) $< -o $@
+
+libchipmunk.a: $(OBJ)
+	ar rcs $@ $^
+
+libchipmunk.so.$(LIBVER): $(OBJ)
+	gcc -shared -Wl,-soname,$@ -lm -o $@ $^
+
+install:
+	install -d -m 0755 $(LIBDEST)
+	install -m 0644 *.a $(LIBDEST)
+	install -m 0755 *.so.$(LIBVER) $(LIBDEST)
+	ln -s libchipmunk.so.$(LIBVER) $(LIBDEST)/libchipmunk.so
+	install -d -m 0755 $(CHIPINC1)
+	install -d -m 0755 $(CHIPINC2)
+	install -m 0644 $(INC1)/*.h $(CHIPINC1)
+	install -m 0644 $(INC2)/*.h $(CHIPINC2)
+
+clean: cleanobj
+	rm -f *.so* *.a
+cleanobj:
+	rm -f *.o */*.o

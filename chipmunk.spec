@@ -110,3 +110,22 @@ rm -rf %{buildroot}
 %files -n %{samplname}
 %defattr(-,root,root)
 %doc samples
+
+
+%changelog
+* Mon Jan 09 2012 Andrey Bondrov <abondrov@mandriva.org> 6.0.3-2mdv2012.0
++ Revision: 758798
+- Set library version to 6.0, update major to 6
+- New version 6.0.3, library major is still 5
+
+  + Paulo Ricardo Zanoni <pzanoni@mandriva.com>
+    - Add missing -lGLU when compiling with freeglut
+    - Add missing GLU BR
+    - Require gerneric version of glut (so we can switch to freeglut)
+
+* Tue Jul 13 2010 Florent Monnier <blue_prawn@mandriva.org> 5.2.0-1mdv2011.0
++ Revision: 552628
+- fix for /usr/lib64
+- import chipmunk
+
+
