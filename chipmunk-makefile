@@ -4,7 +4,7 @@ OBJ := $(patsubst %.c, %.o, $(SRC_FILES))
 INC1 := ../include/chipmunk/
 INC2 := ../include/chipmunk/constraints/
 CFLAGS := -fPIC -std=gnu99 -DNDEBUG
-LIBVER := 6.0
+LIBVER := 6.1
 PREFIX := /usr
 LIBDEST := $(PREFIX)/lib
 INCDIR := $(PREFIX)/include
