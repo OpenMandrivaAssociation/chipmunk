@@ -8,7 +8,7 @@
 Summary:	2D physics engine
 Name:		chipmunk
 Version:	6.1.5
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/C
 Url:		http://chipmunk-physics.net/
