@@ -11,7 +11,7 @@ Version:	6.1.5
 Release:	2
 License:	MIT
 Group:		Development/C
-Url:		http://chipmunk-physics.net/
+Url:		https://chipmunk-physics.net/
 Source0:	http://chipmunk-physics.net/release/Chipmunk-%{pkg_major}.x/Chipmunk-%{version}.tgz
 Source1:	chipmunk-makefile
 # opengl is only needed by the demos
