@@ -15,6 +15,7 @@ Url:		https://chipmunk-physics.net/
 Source0:	http://chipmunk-physics.net/release/Chipmunk-%{pkg_major}.x/Chipmunk-%{version}.tgz
 Source1:	chipmunk-makefile
 # opengl is only needed by the demos
+BuildRequires:	make
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
